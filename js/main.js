@@ -183,8 +183,9 @@ function showStats(data) {
 function getStats() {
     var user = $("#username").val();
     var repository = $("#repository").val();
+    var page = $("#page").val();
 
-    var url = apiRoot + "repos/" + user + "/" + repository + "/releases";
+    var url = apiRoot + "repos/" + user + "/" + repository + "/releases?page=" + page;
     $.getJSON(url, showStats).fail(showStats);
 }
 
@@ -200,17 +201,20 @@ $(function() {
     $("#get-stats-button").click(function() {
         window.location = "?username=" + $("#username").val() +
             "&repository=" + $("#repository").val() +
+            "&page=" + $("#page").val() +            
             ((getQueryVariable("search") == "0") ? "&search=0" : "");
     });
 
     var username = getQueryVariable("username");
     var repository = getQueryVariable("repository");
+    var page = getQueryVariable("page");
     var showSearch = getQueryVariable("search");
 
     if(username != "" && repository != "") {
         $("#username").val(username);
         $("#title .username").text(username);
         $("#repository").val(repository);
+        $("#page").val(page);
         $("#title .repository").text(repository);
         validateInput();
         getUserRepos();
