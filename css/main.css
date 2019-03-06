@@ -16,7 +16,7 @@ code {
 .form-group {
     width: 100%;
 }
-#username, #repository, #get-stats-button {
+#username, #repository, #get-stats-button, #page {
     margin-top: 10px;
     width: 100%;
 }
